@@ -5,7 +5,7 @@ from classes.docentes import Docentes
 from classes.salas import Salas
 from classes.unidadeCurric import UnidadeCurric
 from classes.class_horario import Class_horario
-from classes.orderproduct import OrderProduct
+
 from classes.userlogin import Userlogin
 
 
@@ -24,6 +24,7 @@ app.secret_key = 'BAD_SECRET_KEY'
 import subs_login as lsub
 import subs_gform as gfsub
 import subs_gformT as gfTsub
+import subs_hform as gfhsub
 
 @app.route("/")
 def index():
@@ -50,7 +51,9 @@ def gform(cname=''):
 def gformT(cname=''):
     return gfTsub.gformT(cname)
 
-
+@app.route("/hform/<cname>", methods=["post","get"])
+def hform(cname=''):
+    return gfhsub.hform(cname)
         
 @app.route("/subform/<cname>", methods=["post","get"])
 def subform(cname=""):

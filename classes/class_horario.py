@@ -19,6 +19,7 @@ class Class_horario(Gclass):
     pos = 0
     sortkey = ''
     auto_number = 1
+    nkey = 1
     
     # class attributes, identifier attribute must be the first one on the list
     att = ['_code','_diahora','_cod_turma','_cod_prof','_cod_uc','_cod_sala','_obs']
@@ -37,7 +38,8 @@ class Class_horario(Gclass):
                 code = str(max(map(int,Class_horario.getatlist('_code'))) + 1)
         # Object attributes
         self._code = code
-        self._diahora = self.str2datetime(diahora)
+        self._diahoradate = self.str2datetime(diahora)
+        self._diahora = self.str2datetimestr(self._diahoradate)
         
         self._cod_turma = cod_turma
         self._cod_prof = cod_prof
@@ -115,6 +117,10 @@ class Class_horario(Gclass):
     def obs(self, obs):
         self._obs = obs
         
+    def str2datetimestr(self,date):
+        
+        return str(date)
+        
     def str2datetime(self,datestr):
         
         datestr = datestr.replace("/", ";")
@@ -122,11 +128,7 @@ class Class_horario(Gclass):
         datestr = datestr.replace(":", ";")
         datestr = datestr.replace(" ", ";")
         
-        
-        
         diahorastr =list(map(int, datestr.split(";")))
-       
-        
         
         date = datetime.datetime(diahorastr[0], diahorastr[1], diahorastr[2])
         if len(diahorastr)>3:
@@ -137,7 +139,7 @@ class Class_horario(Gclass):
             date=date.replace(second = diahorastr[5])
             date.replace
         
-        return str(date)
+        return date
  
 
 if __name__ == "__main__":    
@@ -145,7 +147,40 @@ if __name__ == "__main__":
   
     # Creates a Class_horario
     Class_horario.read('../data/' 'horario.db')
-    teste = Class_horario('None','2021/05/16 11:20:30','t1','p1','uc1','s1','obs')
+    
+    teste = Class_horario('None','2024/4/17 10:00:00','t14','p14','uc14','s14','NOTA 14') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    
+    teste = Class_horario('None','2024/3/4 11:00:00','t1','p1','uc1','s1','NOTA 1') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/5 12:00:00','t2','p2','uc2','s2','NOTA 2') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/6 14:00:00','t3','p3','uc3','s3','NOTA 3') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/7 15:00:00','t4','p4','uc4','s4','NOTA 4') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/8 16:00:00','t5','p5','uc5','s5','NOTA 5') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/9 11:00:00','t6','p6','uc6','s6','NOTA 6') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/10 12:00:00','t7','p7','uc7','s7','NOTA 7') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/11 13:00:00','t8','p8','uc8','s8','NOTA 8') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/12 14:00:00','t9','p9','uc9','s9','NOTA 9') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/13 15:00:00','t10','p10','uc10','s10','NOTA 10') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/14 16:00:00','t11','p11','uc11','s11','NOTA 11') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/15 17:00:00','t12','p12','uc12','s12','NOTA 12') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/16 18:00:00','t13','p13','uc13','s13','NOTA 13') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+    teste = Class_horario('None','2024/3/17 19:00:00','t14','p14','uc14','s14','NOTA 14') 
+    Class_horario.insert(getattr(teste, Class_horario.att[0]))
+
+
     #code,diahora,cod_turma,cod_prof,cod_uc,cod_sala,obs
     Class_horario.insert(getattr(teste, Class_horario.att[0]))
     print(Class_horario.current())
