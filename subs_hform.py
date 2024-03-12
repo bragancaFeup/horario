@@ -118,7 +118,8 @@ def hform(cname=''):
         return render_template("hform.html", butshow=butshow, butedit=butedit,
                         cname=cname, obj=obj,att=cl.att,header=cl.header,des=cl.des,
                         ulogin=session.get("user"),auto_number=cl.auto_number,
-                        objh=objh,selectedcell = diacalen)
+                        objh=objh,selectedcell = diacalen,
+                        UnidadeCurric = UnidadeCurric.obj)
     else:
         return render_template("index.html", ulogin=ulogin)
 

@@ -198,17 +198,17 @@ class Horario2Form(Gclass):
                     self.horaFim = l
                     
                 self.semanaTree[l][c].codeevent = evento.code 
-                self.semanaTree[l][c].texto = self.text_to_horario(evento)
+                self.semanaTree[l][c].texto = self.text_to_horario(evento) 
                 
                 if c == cs and l == ls:
-                    self._eventsdiahseleted.append([evento.code,str(evento)])
+                    self._eventsdiahseleted.append([evento.code,str(evento),len(str(evento))])
                     
                 
         
 
       
     def text_to_horario(self,evento):
-        texto = f"{evento.cod_uc} - {evento.cod_turma}- {evento.cod_prof}- {evento.cod_sala}"
+        texto = f"{evento.cod_uc} - {evento.cod_turma}- {evento.cod_prof}- {evento.cod_sala} "
         #print("--------",texto,"---------")
         return texto
        
@@ -219,12 +219,42 @@ class Horario2Form(Gclass):
                 
 class celulaform():
     def __init__(self,l,c,dia,hora):
+        self.cores = {
+            0: 'White',
+            1: 'GreenYellow',
+            2: 'OrangeRed',
+            3: 'red'}
+        
+        self.nevents = -1
         self.l = l
         self.c = c
         self.dia = dia
         self.hora =hora
         self.codeevent = "None"
-        self.texto = ""        
+        self.texto = "" 
+        
+    # codeevent property getter method
+    @property
+    def codeevent(self):
+        return self._codeevent
+    
+    # cor property getter method
+    @property
+    def cor(self):
+        if self.nevents in self.cores.keys():
+            temp = self.cores[self.nevents]
+        else:
+            temp = self.cores[len(self.cores)-1]
+        
+        return temp
+    
+    # nomeDocente property getter method 
+    # codeevent property setter method
+    
+    @codeevent.setter
+    def codeevent(self, codeevent):
+        self.nevents += 1
+        self._codeevent = codeevent
     
     def __str__(self):
         return f'{self.l} -{self.c} -{self.dia} -{self.hora} -{self.codeevent} -{self.texto} - '

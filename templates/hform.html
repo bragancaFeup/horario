@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
 {% endblock %}
 
@@ -11,7 +12,7 @@
         <br>
         
 <!-- horario -->
-   <table>
+   <table class="tabelah">
        <tr>
          <td><button id="previousw" type="button" {{butshow}} onclick="window.location.href = '/hform/{{cname}}?option=previousw'" class="button1"> < </button></td>
         
@@ -27,7 +28,8 @@
            <td>{{objh.horas[loop.index-1]}}</td>
              {% for cel in linha %}
                 
-                 <td><input type="text" value = "{{ cel.texto }}"   onclick="window.location.href = '/hform/{{cname}}?option=selcel&codev={{cel.codeevent}}'" ></td>
+                 <td><input type="text" value = "{{ cel.texto }}" readonly wrap="soft"  style="background-color:{{ cel.cor }}"
+                 onclick="window.location.href = '/hform/{{cname}}?option=selcel&codev={{cel.codeevent}}'" ></td>
              {% endfor %}
              <td>-</td>
            </tr>
@@ -64,7 +66,16 @@
                         <input type="text" disabled="" id="_code" name="_code" value="{{obj['_code']}}" size="30"</td>
                         <td><label for="_cod_uc">cod_uc:</label><br>
                         
-                        <input type="text" {{butedit}} id="_cod_uc" name="_cod_uc" value="{{obj['_cod_uc']}}" size="30"></td>
+                        <!--
+                        <input type="text" {{butedit}} id="_cod_uc" name="_cod_uc" value="{{obj['_cod_uc']}}" size="30">
+                        -->
+                        <select name="_cod_uc" id="_cod_uc" {{butedit}} >
+                                {% for valor in UnidadeCurric.values() %}               
+                                    <option value="{{valor.code}}">{{valor.NomeUC}}</option>
+                                 {% endfor %}
+                                 <option value="{{obj['_cod_uc']}}" SELECTED>{{UnidadeCurric[obj['_cod_uc']].NomeUC}}</option>"
+                        </select>
+                        </td>
                         <td><label for="_cod_turma">cod_turma:</label><br>
                         
                         <input type="text" {{butedit}} id="_cod_turma" name="_cod_turma" value="{{obj['_cod_turma']}}" size="30"></td>
@@ -119,7 +130,7 @@
              
                 {% for linha in objh.eventsdiahseleted %}
                    <tr>                  
-                       <td><input type="text" value = "{{ linha[1] }}" onclick="window.location.href = '/hform/{{cname}}?option=selcel&codev={{linha[0]}}'" ></td>
+                       <td><input type="text" value = "{{ linha[1] }}" size = {{linha[2]}} onclick="window.location.href = '/hform/{{cname}}?option=selcel&codev={{linha[0]}}'" ></td>
                        </tr>
                    
                    {% endfor %}
