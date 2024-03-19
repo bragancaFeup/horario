@@ -248,9 +248,9 @@ class celulaform():
         
         return temp
     
-    # nomeDocente property getter method 
-    # codeevent property setter method
     
+    # codeevent property setter method
+  
     @codeevent.setter
     def codeevent(self, codeevent):
         self.nevents += 1

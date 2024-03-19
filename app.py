@@ -1,3 +1,10 @@
+'''
+no PC deve ter o ficheiro datafile.py com
+
+filename = 'data/'
+
+'''
+
 from flask import Flask, render_template, request, session
 from datafile import filename
 from classes.turmas import Turmas
