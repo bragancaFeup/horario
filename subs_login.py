@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Mar  4 16:04:03 2024
+@author: António Brito / Carlos Bragança
+(2024)
+#objective: subs_login.py
 
-@author: braga
-"""
+"""""
 
 from flask import Flask, render_template, request, session
 from classes.userlogin import Userlogin

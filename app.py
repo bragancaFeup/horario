@@ -1,3 +1,10 @@
+"""
+@author: António Brito / Carlos Bragança
+(2024)
+#objective: app.py
+
+"""""
+
 '''
 no PC deve ter o ficheiro datafile.py com
 

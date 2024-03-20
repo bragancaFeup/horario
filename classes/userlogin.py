@@ -2,7 +2,7 @@
 """
 @author: António Brito / Carlos Bragança
 (2022)
-#objective: class Person
+#objective: class userlogin
 """""
 #%% Class User - generic version
 # import sys

@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Mar  4 16:15:53 2024
+@author: António Brito / Carlos Bragança
+(2024)
+#objective: subs_hform.py
 
-@author: braga
-"""
+"""""
 from flask import Flask, render_template, request, session
 from classes.docentes import Docentes
 from classes.salas import Salas
